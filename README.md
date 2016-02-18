@@ -2,7 +2,7 @@
 Kaplan-Meier plots with at risk table below
 
 ##About
-This is a slightly modified version of the script created by Abhijit Dasgupta from statbandit [statbandit](http://statbandit.wordpress.com/2011/03/08/an-enhanced-kaplan-meier-plot/) with contributions by Gil Tomas and option to remove the legend and also draw marks at censoring locations by Nadieh Bremer.  I have included some further modifications regarding the positioning of legends etc...
+This is a slightly modified version of the script created by Abhijit Dasgupta from statbandit [statbandit](http://statbandit.wordpress.com/2011/03/08/an-enhanced-kaplan-meier-plot/) with contributions by Gil Tomas and option to remove the legend and also draw marks at censoring locations by Nadieh Bremer.  I have included some further modifications regarding the positioning of legends, dashed lines, colours etc...
 
 ##Dependencies
 Several dependencies:
