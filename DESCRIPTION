@@ -1,8 +1,9 @@
 Package: ggkm
+Type: Package
 Title: Kaplan-Meier survival curves with numbers at risk below
-Version: 0.0.0.9000
-Authors@R: person("Abhijit", " Dasgupta", role = c("aut", "cre")
-Authors@R: person("Michael", " Way", role = c("aut"))
-Depends: R (>= 3.1.2)
+Version: 1.0
+Date: 2016-02-18
+Author: Abhijit Dasgupta
+Author: Michael Way
+Description: 
 License: None
-LazyData: true
