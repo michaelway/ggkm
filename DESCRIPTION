@@ -1,0 +1,8 @@
+Package: ggkm
+Title: Kaplan-Meier survival curves with numbers at risk below
+Version: 0.0.0.9000
+Authors@R: Abhijit Dasgupta with contributions by Gil Tomas & Michael Way
+Description: This is a modified version of the code originally created by Abhijit Dasgupta. 
+Depends: R (>= 3.1.2)
+License: What license is it under?
+LazyData: true
