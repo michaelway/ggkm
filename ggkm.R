@@ -1,31 +1,3 @@
-#' Create a Kaplan-Meier plot using ggplot2
-#'
-#' @param sfit: a survfit object
-#' @param table: logical: Create a table graphic below the K-M plot, indicating at-risk numbers?
-#' @param returns logical: if TRUE, return an arrangeGrob object
-#' @param xlabs: x-axis label
-#' @param ylabs: y-axis label
-#' @param ystratalabs: The strata labels. Default = levels(summary(sfit)$strata)
-#' @param ystrataname: The legend name. Default = "Strata"
-#' @param timeby numeric: control the granularity along the time-axis
-#' @param main plot title
-#' @param pval logical: add the pvalue to the plot?
-#' @param marks logical: should censoring marks be added?
-#' @param shape: what shape should the censoring marks be, default is a vertical line
-#' @param legend logical: should a legend be added to the plot?
-#'
-#' @return a ggplot is made. if return=TRUE, then an arrangeGlob object
-#' is returned
-#' @author Abhijit Dasgupta with contributions by Gil Tomas & Michael Way
-#' \url{http://statbandit.wordpress.com/2011/03/08/an-enhanced-kaplan-meier-plot/}
-#' slight adjustment to cope with none strata calls (e.g. Surv(time,event)~1),
-#' option to remove the legend and also draw marks at censoring locations by Nadieh Bremer
-#'
-#' @examples
-#'  library(survival)
-#'  data(colon)
-#'  fit <- survfit(Surv(time,status)~rx, data=colon)
-#'  ggkm(fit, timeby=500)
 
 ggkm <- function(sfit,
                  table = TRUE,
