@@ -18,12 +18,9 @@
 #' @param subs = NULL,
 #' @param linecols: Character. Colour brewer pallettes too colour lines. Default ="Set1",
 #' @param dashed: logical. Should a variety of linetypes be used to identify lines. Default = FALSE
-#' @return a ggplot is made. if return=TRUE, then an arrangeGlob object
-#' is returned
-#' @author Abhijit Dasgupta with contributions by Gil Tomas & Michael Way
+#' @author Michael Way, but heavily modified version of a script created by Abhijit Dasgupta with contributions by Gil Tomas.
 #' \url{http://statbandit.wordpress.com/2011/03/08/an-enhanced-kaplan-meier-plot/}
-#' slight adjustment to cope with none strata calls (e.g. Surv(time,event)~1),
-#' option to remove the legend and also draw marks at censoring locations by Nadieh Bremer
+#' I have packaged this function, added functions to namespace and included a range of new parameters.
 #' @examples
 #'  library(survival)
 #'  data(colon)
@@ -59,7 +56,7 @@
 #' @importFrom plyr rbind.fill
 #' @export
 ggkm <- function(sfit,
-                 table = TRUE,
+                 table = FALSE,
                  xlabs = "Time-to-event",
                  ylabs = "Survival (%)",
                  xlims = c(0,max(sfit$time)),
@@ -202,15 +199,15 @@ ggkm <- function(sfit,
   if(legend == FALSE)
     p <- p + theme(legend.position="none")
   
-  #Add censoring marks to the line:
-  if(marks == TRUE)
-    p <- p + geom_point(data = subset(df, n.censor >= 1), aes(x = time, y = surv), shape = shape, colour = "black")
-  
-  
   #Add lines too plot
   p <- p + geom_step(size = 0.75) +
     scale_linetype_manual(name = ystrataname, values=linetype) +
     scale_colour_brewer(name = ystrataname, palette=linecols)
+  
+  #Add censoring marks to the line:
+  if(marks == TRUE)
+    p <- p + geom_point(data = subset(df, n.censor >= 1), aes(x = time, y = surv), shape = shape, colour = "black")
+  
   
   
   ## Create a blank plot for place-holding

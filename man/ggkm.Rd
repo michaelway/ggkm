@@ -4,8 +4,8 @@
 \alias{ggkm}
 \title{Creates a Kaplan-Meier plot with at risk tables below}
 \usage{
-ggkm(sfit, table = TRUE, xlabs = "Time-to-event", ylabs = "Survival (\%)",
-  xlims = c(0, max(sfit$time)), ylims = c(0, 1),
+ggkm(sfit, table = FALSE, xlabs = "Time-to-event",
+  ylabs = "Survival (\%)", xlims = c(0, max(sfit$time)), ylims = c(0, 1),
   ystratalabs = names(sfit$strata), ystrataname = "Strata",
   timeby = signif(max(sfit$time)/7, 1), main = "", pval = FALSE,
   marks = TRUE, shape = 3, legend = TRUE, legendposition = c(0.85, 0.8),
@@ -50,10 +50,6 @@ ggkm(sfit, table = TRUE, xlabs = "Time-to-event", ylabs = "Survival (\%)",
 
 \item{dashed:}{logical. Should a variety of linetypes be used to identify lines. Default = FALSE}
 }
-\value{
-a ggplot is made. if return=TRUE, then an arrangeGlob object
-is returned
-}
 \description{
 Creates a Kaplan-Meier plot with at risk tables below
 }
@@ -64,9 +60,8 @@ Creates a Kaplan-Meier plot with at risk tables below
  ggkm(fit, timeby=500)
 }
 \author{
-Abhijit Dasgupta with contributions by Gil Tomas & Michael Way
+Michael Way, but heavily modified version of a script created by Abhijit Dasgupta with contributions by Gil Tomas.
 \url{http://statbandit.wordpress.com/2011/03/08/an-enhanced-kaplan-meier-plot/}
-slight adjustment to cope with none strata calls (e.g. Surv(time,event)~1),
-option to remove the legend and also draw marks at censoring locations by Nadieh Bremer
+I have packaged this function, added functions to namespace and included a range of new parameters.
 }
 
