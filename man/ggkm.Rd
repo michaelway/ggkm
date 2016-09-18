@@ -4,18 +4,15 @@
 \alias{ggkm}
 \title{Creates a Kaplan-Meier plot with at risk tables below}
 \usage{
-ggkm(sfit, table = TRUE, returns = FALSE, xlabs = "Time-to-event",
-  ylabs = "Survival (\%)", xlims = c(0, max(sfit$time)), ylims = c(0, 1),
-  ystratalabs = c("CC", "CG", "GG"), ystrataname = "Genotype",
-  timeby = 100, main = "", pval = FALSE, marks = TRUE, shape = 3,
-  legend = TRUE, legendposition = c(0.85, 0.8), subs = NULL,
-  linecols = c("red", "blue", "green"), linetype = c("solid", "dashed",
-  "twodash"), ...)
+ggkm(sfit, table = TRUE, xlabs = "Time-to-event", ylabs = "Survival (\%)",
+  xlims = c(0, max(sfit$time)), ylims = c(0, 1),
+  ystratalabs = names(sfit$strata), ystrataname = "Strata",
+  timeby = signif(max(sfit$time)/7, 1), main = "", pval = FALSE,
+  marks = TRUE, shape = 3, legend = TRUE, legendposition = c(0.85, 0.8),
+  ci = FALSE, subs = NULL, linecols = "Set1", dashed = FALSE, ...)
 }
 \arguments{
-\item{returns}{logical: if TRUE, return an arrangeGrob object}
-
-\item{timeby}{numeric: control the granularity along the time-axis}
+\item{timeby}{numeric: control the granularity along the time-axis; defaults to 7 time-points. Default = signif(max(sfit$time)/7, 1)}
 
 \item{main}{plot title}
 
@@ -23,7 +20,7 @@ ggkm(sfit, table = TRUE, returns = FALSE, xlabs = "Time-to-event",
 
 \item{marks}{logical: should censoring marks be added?}
 
-\item{legend}{logical: should a legend be added to the plot?}
+\item{subs}{= NULL,}
 
 \item{sfit:}{a survfit object}
 
@@ -33,11 +30,25 @@ ggkm(sfit, table = TRUE, returns = FALSE, xlabs = "Time-to-event",
 
 \item{ylabs:}{y-axis label}
 
-\item{ystratalabs:}{The strata labels. Default = levels(summary(sfit)$strata)}
+\item{xlims:}{numeric: list of min and max for x-axis. Default = c(0,max(sfit$time))}
+
+\item{ylims:}{numeric: list of min and max for y-axis. Default = c(0,1)}
+
+\item{ystratalabs:}{character list. A list of names for each strata. Default = names(sfit$strata)}
 
 \item{ystrataname:}{The legend name. Default = "Strata"}
 
 \item{shape:}{what shape should the censoring marks be, default is a vertical line}
+
+\item{legend:}{logical. should a legend be added to the plot?}
+
+\item{legendposition:}{numeric. x, y position of the legend if plotted. Default=c(0.85,0.8)}
+
+\item{ci:}{logical. Should confidence intervals be plotted. Default = FALSE}
+
+\item{linecols:}{Character. Colour brewer pallettes too colour lines. Default ="Set1",}
+
+\item{dashed:}{logical. Should a variety of linetypes be used to identify lines. Default = FALSE}
 }
 \value{
 a ggplot is made. if return=TRUE, then an arrangeGlob object
