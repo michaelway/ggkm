@@ -35,8 +35,12 @@ ggkm(fit)
 png("KM1.png", units='in', height=5, width=7, res = 220)
 ggkm(fit)
 dev.off()
-
 ```
+
+![](Images/km.png)
+
+
+
 #### Basic Kaplan-Meier plot with at-risk table
 
 An at risk table can easily be added.
@@ -44,6 +48,8 @@ An at risk table can easily be added.
 ```
 ggkm(fit, table = TRUE)
 ```
+
+![](Images/kmTable.png)
 
 
 #### Customise it!
@@ -64,11 +70,13 @@ ggkm(fit, table = T,
 
 ```
 
+![](Images/kmElaborate.png)
+
 ### Points
 
 The marker points which can be modified based on the the numbering of the point symbols given in the image below.
 
-![Available points](http://1.1.1.2/bmi/www.sthda.com/sthda/RDoc/images/points-symbols.png)
+![Available points](http://www.statmethods.net/advgraphs/images/points.png)
 
 ### Colours
 
