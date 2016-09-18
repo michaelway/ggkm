@@ -1,3 +1,4 @@
+#' Creates a Kaplan-Meier plot with at risk tables below
 #' @param sfit: a survfit object
 #' @param table: logical: Create a table graphic below the K-M plot, indicating at-risk numbers?
 #' @param returns logical: if TRUE, return an arrangeGrob object
@@ -11,20 +12,24 @@
 #' @param marks logical: should censoring marks be added?
 #' @param shape: what shape should the censoring marks be, default is a vertical line
 #' @param legend logical: should a legend be added to the plot?
-#'
 #' @return a ggplot is made. if return=TRUE, then an arrangeGlob object
 #' is returned
 #' @author Abhijit Dasgupta with contributions by Gil Tomas & Michael Way
 #' \url{http://statbandit.wordpress.com/2011/03/08/an-enhanced-kaplan-meier-plot/}
 #' slight adjustment to cope with none strata calls (e.g. Surv(time,event)~1),
 #' option to remove the legend and also draw marks at censoring locations by Nadieh Bremer
-#'
 #' @examples
 #'  library(survival)
 #'  data(colon)
 #'  fit <- survfit(Surv(time,status)~rx, data=colon)
 #'  ggkm(fit, timeby=500)
-
+#' @import ggplot2
+#' @import survival
+#' @import gridExtra
+#' @import reshape
+#' @import plyr
+#' @import grid
+#' @export
 ggkm <- function(sfit,
                  table = TRUE,
                  returns = FALSE,
@@ -46,27 +51,6 @@ ggkm <- function(sfit,
                  linetype=c("solid", "dashed", "twodash"),
                  ...) {
 
-  #############
-  # libraries #
-  #############
-
-  #Check if the following packages have been installed. If not, install them
-  if (!"ggplot2" %in% installed.packages()) install.packages("ggplot2")
-  if (!"survival" %in% installed.packages()) install.packages("survival")
-  if (!"gridExtra" %in% installed.packages()) install.packages("gridExtra")
-  if (!"reshape" %in% installed.packages()) install.packages("reshape")
-
-  require(ggplot2)
-  require(survival)
-  require(gridExtra)
-  require(reshape) #rbind.fill function is in this package.
-  require(plyr) #additional dependency.
-  require(grid)
-
-  suppressPackageStartupMessages(library(ggplot2, warn.conflicts=FALSE))
-  suppressPackageStartupMessages(library(survival, warn.conflicts=FALSE))
-  suppressPackageStartupMessages(library(gridExtra, warn.conflicts=FALSE))
-  suppressPackageStartupMessages(library(reshape, warn.conflicts=FALSE))
 
   #################################
   # sorting the use of subsetting #
