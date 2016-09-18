@@ -1,7 +1,7 @@
 # ggkm
 Kaplan-Meier plots with at risk table below
 
-![](https://github.com/michaelway/ggkm/Images/ggkm.gif)
+![](Images/ggkm.gif)
 
 ##Install
 
