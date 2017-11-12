@@ -183,7 +183,6 @@ ggkm <- function(sfit,
           legend.key = element_rect(colour = NA),
           panel.border = element_blank(),
           plot.margin = unit(c(0, 1, .5,ifelse(m < 10, 1.5, 2.5)),"lines"),
-          panel.grid.minor = element_blank(),
           panel.grid.major = element_blank(),
           axis.line.x = element_line(size = 0.5, linetype = "solid", colour = "black"),
           axis.line.y = element_line(size = 0.5, linetype = "solid", colour = "black")) +
